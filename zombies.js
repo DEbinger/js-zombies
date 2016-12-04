@@ -96,44 +96,8 @@ class Food extends Item{
  * @property {method} getPack              Returns private variable `pack`.
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
-class Player{
-  constructor ( name, health, strength, speed, pack, maxHealth, isAlive, equipped ){
-    this.name = name;
-    this.health = health;
-    this.strength = strength;
-    this.speed = speed;
-    this._pack = [];
-    this._maxHealth = health;
-    this.isAlive = true;
-    this.equipped = false;
-  }
 
-  getPack(){
-    return this._pack;
-  }
-
-  getMaxHealth(){
-    return this._maxHealth;
-  }
-
-  checkPack(){
-    console.log(this.getPack());
-  }
-
-  takeItem(item){
-    if (this._pack.length <= 2) {
-      this._pack.push(item);
-    } else {
-      console.log('the pack is way too full, so the item could not be stored');
-      return false;
-    }
-  }
-
-  discardItem(){
-    checkPack.splice(['item','weapon','food']);
-  }
-}
-/**
+ /**
  * Player Class Method => checkPack()
  * -----------------------------
  * Player checks the contents of their pack.
@@ -162,8 +126,6 @@ class Player{
  * @param {Item/Weapon/Food} item   The item to take.
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
-
-
 /**
  * Player Class Method => discardItem(item)
  * -----------------------------
@@ -189,6 +151,63 @@ class Player{
  * @param {Item/Weapon/Food} item   The item to discard.
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
+
+
+
+class Player{
+  constructor ( name, health, strength, speed, pack, maxHealth, isAlive, equipped ){
+    this.name = name;
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this._pack = [];
+    this._maxHealth = health;
+    this.isAlive = true;
+    this.equipped = false;
+  }
+
+  getPack(){
+    return this._pack;
+  }
+
+  getMaxHealth(){
+    return this._maxHealth;
+  }
+
+  checkPack(){
+    console.log(this.getPack());
+  }
+
+  takeItem(item){
+    if (this.getPack().length <= 2) {
+      this.getPack().push(item);
+    } else {
+      console.log('the pack is way too full, so the item could not be stored');
+      return false;
+    }
+  }
+
+  discardItem(item){
+    if (this.getPack().indexOf(item) > -1) {
+      this.getPack().splice(this.getPack().indexOf(item), 1);
+      console.log(this.name + 'this has been discarded ' + this.item);
+      return true;
+    } else {
+      console.log('nothing has been discarded, since item is not found');
+      return false;
+    }
+  }
+  equip(itemToEquip){
+    if (this.getPack().indexOf(itemToEquip) > -1 && itemToEquip instanceof Weapon){
+      if (this.equipped){
+            this.getPack().splice(this.getPack().indexOf(itemToEquip),1, this.equipped);
+            this.equipped = itemToEquip;
+      }else{
+            this.getPack().splice(this.getPack().indexOf(itemToEquip),1);
+            this.equipped = itemToEquip;
+      }
+  }
+}
 
 
 /**
@@ -221,6 +240,7 @@ class Player{
  * Player can only eat food items from their pack.
  *
  * Remove itemToEat from the pack.
+
  * Increase the player's health by the food's energy amount, but do not
  *   exceed the player's max health.  If exceeded, simply set player's health
  *   to max health instead.
@@ -230,7 +250,16 @@ class Player{
  * @name eat
  * @param {Food} itemToEat  The food item to eat.
  */
-
+eat(itemToEat){
+  if (this.getPack().indexOf(itemToEat) > -1 && itemToEat instanceof Food){
+    this.getPack().splice(this.getPack().indexOf(itemToEat),1);
+    if (itemToEat.energy + this.health <= this.getMaxHealth()){
+      this.health = itemToEat.energy + this.health;
+    }else{
+      this.health = this.getMaxHealth();
+    }
+  }
+}
 
 /**
  * Player Class Method => useItem(item)
@@ -244,7 +273,9 @@ class Player{
  * @name useItem
  * @param {Item/Weapon/Food} item   The item to use.
  */
+useItem(item){
 
+}
 
 /**
  * Player Class Method => equippedWith()
@@ -259,7 +290,7 @@ class Player{
  * @name equippedWith
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
-
+}
 
 /**
  * Class => Zombie(health, strength, speed)
@@ -276,7 +307,14 @@ class Player{
  * @property {number} speed
  * @property {boolean} isAlive      Default value should be `true`.
  */
-
+/*class Zombie{
+  constructor ( health, strength, speed, maxHealth, isAlive){
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this._maxHealth = health;
+    this.isAlive = true;
+  }*/
 
 /**
  * Class => FastZombie(health, strength, speed)
@@ -373,7 +411,7 @@ class Player{
 
 /**
  * Sample run.
- * Feel free to edit this and check your game logic.
+ * Feel free to edit this check your game logic.
  */
 function runGame() {
   // var player = new Player("Joan", 500, 30, 70);
