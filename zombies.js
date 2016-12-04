@@ -274,7 +274,11 @@ eat(itemToEat){
  * @param {Item/Weapon/Food} item   The item to use.
  */
 useItem(item){
-
+  if (item instanceof (Weapon) === true) {
+    this.equip(item);
+  }else if (item instanceof (Food) === true) {
+    this.eat(item);
+  }
 }
 
 /**
