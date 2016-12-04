@@ -107,23 +107,28 @@ class Player{
     this.isAlive = true;
     this.equipped = false;
   }
+
   getPack(){
     return this._pack;
   }
+
   getMaxHealth(){
     return this._maxHealth;
   }
-  checkPack(){
-    return getPack;
-  }
-  takeItem(item, weapon, food){
-    checkPack.push([]);
-    if (item > 3 ) {
-      return false;
-    } else {
 
+  checkPack(){
+    console.log(this.getPack());
+  }
+
+  takeItem(item){
+    if (this._pack.length <= 2) {
+      this._pack.push(item);
+    } else {
+      console.log('the pack is way too full, so the item could not be stored');
+      return false;
     }
   }
+
   discardItem(){
     checkPack.splice(['item','weapon','food']);
   }
