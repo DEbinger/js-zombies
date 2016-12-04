@@ -113,6 +113,20 @@ class Player{
   getMaxHealth(){
     return this._maxHealth;
   }
+  checkPack(){
+    return getPack;
+  }
+  takeItem(item, weapon, food){
+    checkPack.push([]);
+    if (item > 3 ) {
+      return false;
+    } else {
+
+    }
+  }
+  discardItem(){
+    checkPack.splice(['item','weapon','food']);
+  }
 }
 /**
  * Player Class Method => checkPack()
@@ -125,7 +139,6 @@ class Player{
  *
  * @name checkPack
  */
-
 
 /**
  * Player Class Method => takeItem(item)
