@@ -294,6 +294,15 @@ useItem(item){
  * @name equippedWith
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
+  equippedWith() {
+    if(this.equipped) {
+      console.log("Player " + this.name + " you are equipped with " + this.equipped.name);
+      return this.equipped.name;
+    }else{
+      console.log("Player " + this.name + " you are currently not equipped with an item");
+      return false;
+    }
+  }
 }
 
 /**
@@ -311,15 +320,15 @@ useItem(item){
  * @property {number} speed
  * @property {boolean} isAlive      Default value should be `true`.
  */
-/*class Zombie{
+class Zombie{
   constructor ( health, strength, speed, maxHealth, isAlive){
     this.health = health;
     this.strength = strength;
     this.speed = speed;
     this._maxHealth = health;
     this.isAlive = true;
-  }*/
-
+  }
+}
 /**
  * Class => FastZombie(health, strength, speed)
  * -----------------------------
