@@ -444,38 +444,38 @@ class Zombie{
  * Feel free to edit this check your game logic.
  */
 function runGame() {
-  // var player = new Player("Joan", 500, 30, 70);
-  // var zombie = new Zombie(40, 50, 20);
-  // var charger = new FastZombie(175, 25, 60);
-  // var tank = new StrongZombie(250, 100, 15);
-  // var spitter = new RangedZombie(150, 20, 20);
-  // var boomer = new ExplodingZombie(50, 15, 10);
+  var player = new Player("The Rock", 500, 100, 50);
+  var zombie = new Zombie(20, 30, 10);
+  var charger = new FastZombie(100, 25, 200);
+  var tank = new StrongZombie(250, 200, 15);
+  var spitter = new RangedZombie(125, 25, 10);
+  var boomer = new ExplodingZombie(5, 15, 10);
 
-  // var shovel = new Weapon("shovel", 15);
-  // var sandwich = new Food("sandwich", 30);
-  // var chainsaw = new Weapon("chainsaw", 25);
+  var turkey = new Weapon("turkey", 15);
+  var saladSpinner = new Food("saladSpinner", 30);
+  var cricketBat = new Weapon("cricketBat", 25);
 
-  // player.takeItem(shovel);
-  // player.takeItem(sandwich);
-  // player.takeItem(chainsaw);
-  // player.discardItem(new Weapon("scythe", 21));
-  // player.discardItem(shovel);
-  // player.checkPack();
-  // player.takeItem(shovel);
-  // player.checkPack();
+  player.takeItem(turkey);
+  player.takeItem(saladSpinner);
+  player.takeItem(cricketBat);
+  player.discardItem(new Weapon("sloppyKisses", 88));
+  player.discardItem(turkey);
+  player.checkPack();
+  player.takeItem(turkey);
+  player.checkPack();
 
-  // player.equippedWith();
-  // player.useItem(chainsaw);
-  // player.equippedWith();
-  // player.checkPack();
+  player.equippedWith();
+  player.useItem(cricketBat);
+  player.equippedWith();
+  player.checkPack();
 
-  // player.useItem(shovel);
-  // player.equippedWith();
-  // player.checkPack();
+  player.useItem(turkey);
+  player.equippedWith();
+  player.checkPack();
 
-  // player.health = 487;
-  // console.log("Before health: " + player.health);
-  // player.useItem(sandwich);
-  // console.log("After health: " + player.health);
-  // player.checkPack();
+  player.health = 487;
+  console.log("Before health: " + player.health);
+  player.useItem(sandwich);
+  console.log("After health: " + player.health);
+  player.checkPack();
 }
