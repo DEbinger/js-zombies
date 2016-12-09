@@ -32,4 +32,7 @@ describe('Weapon', () => {
   it('should have damage', () => {
     weapon.should.have.property('damage');
   });
+  it('should be an instance of item', () => {
+    weapon.should.be.an.instanceof(Zombies.item);
+  });
 });
