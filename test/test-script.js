@@ -16,10 +16,20 @@ describe('Item', () => {
   it('should have a name', () => {
     item.should.have.property('name');
   });
-/*
+
+});
+
 describe('Weapon', () => {
 
-  let Weapon = Zombies.Weapon;
+  let Weapon = new Zombies.weapon;
+
+  it('should be a class', () => {
+    weapon.should.be.a.function;
   });
-*/
+  it('should have a name', () => {
+    weapon.should.have.a.property('name');
+  });
+  it('should have damage', () => {
+    weapon.should.have.property('damage');
+  });
 });
